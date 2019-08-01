@@ -9,9 +9,12 @@ import java.util.Date;
 @Setter
 public class User {
 
-    private int id;
+    private Integer id; // Used Integer instead of int for null check
     private String name;
     private Date birthDate;
+
+    protected User() {
+    }
 
     public User(int id, String name, Date birthDate) {
         this.id = id;
