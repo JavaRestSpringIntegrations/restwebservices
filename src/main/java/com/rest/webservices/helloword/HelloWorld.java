@@ -1,4 +1,4 @@
-package com.rest.webservices;
+package com.rest.webservices.helloword;
 
 public class HelloWorld {
 
