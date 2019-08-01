@@ -1,6 +1,5 @@
-package com.rest.webservices.helloword;
+package com.rest.webservices.helloworld;
 
-import com.rest.webservices.helloword.HelloWorld;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,10 @@ public class HelloWorldController {
     // == hello-world bean
     @GetMapping("/hello-world-path/{name}")
     public HelloWorld helloWorldBeanPath(@PathVariable String name) {
-
+        System.out.println(name);
+        if (name == String.format("test")) // have to tweak this part
+            throw new NameInvalidException("name-"+ name);
         return new HelloWorld(String.format("Hello Word, %s",name));
     }
+
 }
