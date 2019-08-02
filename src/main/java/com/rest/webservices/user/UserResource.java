@@ -1,6 +1,7 @@
 package com.rest.webservices.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -69,10 +70,15 @@ public class UserResource {
     }
 
     @DeleteMapping("/posts/{id}")
-    public void deletePost(@PathVariable int id) {
+    public ResponseEntity<String> deletePost(@PathVariable int id) {
         Post post = service.deleteSinglePostById(id);
         if (post == null)
-            throw new PostNotFoundException("Post-Not-Found: "+id);
+            //throw new PostNotFoundException("Post-Not-Found: "+id);
+            return new ResponseEntity<>("No post found with: "+id, HttpStatus.NOT_FOUND);
+
+//             return empty content
+//            ResponseEntity.noContent();
+        return null;
     }
 
 }
