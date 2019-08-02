@@ -42,4 +42,37 @@ public class UserResource {
 
     // How to return the created status - Use Response.Entity
 
+    @GetMapping("/posts")
+    public List<Post> getAllPosts() {
+        return service.findAllPosts();
+    }
+
+    @GetMapping("/posts/{id}")
+    public Post getSinglePost(@PathVariable int id) {
+        Post singlePost = service.retreiveSinglePost(id);
+        if (singlePost == null)
+            throw new PostNotFoundException("Post-ID: "+id);
+        return singlePost;
+    }
+
+    @PostMapping("/posts")
+    public Post createPost(@RequestBody Post post) {
+        return service.addPost(post);
+    }
+
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id) {
+        User user = service.deleteUserById(id);
+        if (user == null)
+            throw new UserNotFoundException("Not-Found: "+id);
+    }
+
+    @DeleteMapping("/posts/{id}")
+    public void deletePost(@PathVariable int id) {
+        Post post = service.deleteSinglePostById(id);
+        if (post == null)
+            throw new PostNotFoundException("Post-Not-Found: "+id);
+    }
+
 }

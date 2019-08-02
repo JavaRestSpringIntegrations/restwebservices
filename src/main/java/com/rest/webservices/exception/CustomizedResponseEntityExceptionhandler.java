@@ -1,6 +1,7 @@
 package com.rest.webservices.exception;
 
 import com.rest.webservices.helloworld.NameInvalidException;
+import com.rest.webservices.user.PostNotFoundException;
 import com.rest.webservices.user.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,8 +52,8 @@ public class CustomizedResponseEntityExceptionhandler
 
     }
 
-    @ExceptionHandler(NameInvalidException.class)
-    public final ResponseEntity<Object> handleNameInvalidException(Exception ex, WebRequest request) {
+    @ExceptionHandler(PostNotFoundException.class)
+    public final ResponseEntity<Object> handlePostNotFoundException(Exception ex, WebRequest request) {
 
         ExceptionResponse exceptionResponse = new ExceptionResponse(
                 new Date(),
@@ -60,7 +61,7 @@ public class CustomizedResponseEntityExceptionhandler
                 request.getDescription(false)
         );
 
-        return new ResponseEntity(exceptionResponse, HttpStatus.IM_USED);
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
 
     }
 
