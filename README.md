@@ -1,5 +1,7 @@
 # Restful Web Services
 
+[![Build Status](https://cloud.drone.io/api/badges/JavaRestSpringIntegrations/restwebservices/status.svg)](https://cloud.drone.io/JavaRestSpringIntegrations/restwebservices)
+
 Repository for ReST web Services.
 
 Enable logging level for spring framework. In the **application.properties** create the below entry:

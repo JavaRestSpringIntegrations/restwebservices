@@ -1,11 +1,16 @@
 package com.rest.webservices.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -21,15 +26,24 @@ public class UserResource {
     }
 
     @GetMapping("/users/{id}")
-    public User getOneUser(@PathVariable int id) {
+    public Resource<User> getOneUser(@PathVariable int id) {
         User user = service.findOne(id);
         if(user == null)
             throw new UserNotFoundException("id-"+ id);
-        return user;
+
+        // HATEOS
+        Resource<User> resource = new Resource<User>(user);
+
+        //enable to create links from methods
+        ControllerLinkBuilder linkTo =
+                linkTo(methodOn(this.getClass()).getAllUsers());
+        resource.add(linkTo.withRel("all-users"));
+
+        return resource;
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Object> createUser(@RequestBody User user) {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
         User savedUser = service.saveUser(user);
 
         // Return the current request URL
