@@ -1,6 +1,9 @@
 # Restful Web Services
 
 [![Build Status](https://cloud.drone.io/api/badges/JavaRestSpringIntegrations/restwebservices/status.svg)](https://cloud.drone.io/JavaRestSpringIntegrations/restwebservices)
+![GitHub repo size](https://img.shields.io/github/repo-size/JavaRestSpringIntegrations/restwebservices)
+[![GitHub license](https://img.shields.io/github/license/JavaRestSpringIntegrations/restwebservices)](https://github.com/JavaRestSpringIntegrations/restwebservices/blob/master/LICENSE)
+
 
 Repository for ReST web Services.
 
