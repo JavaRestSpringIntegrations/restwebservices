@@ -1,12 +1,14 @@
 package com.rest.webservices.user;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor
 @ToString
 public class Post {
 
@@ -15,8 +17,6 @@ public class Post {
     private String content;
     private Date timestamp;
 
-    public Post() {
-    }
 
     public Post(Integer id, String title, String content, Date timestamp) {
         this.id = id;

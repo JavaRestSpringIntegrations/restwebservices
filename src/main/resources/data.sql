@@ -1,0 +1,6 @@
+insert into user values(101, sysdate(),'Sunil')
+insert into user values(102, sysdate(),'Jo')
+insert into user values(103, sysdate(),'Abel')
+insert into user values(104, sysdate(),'Jewel')
+insert into new_post values(201,'My first post',101)
+insert into new_post values(202,'My first post',101)
